@@ -3,7 +3,9 @@
 
 void render()
 {
+    static float color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
     ImGui::Begin("Test tool");
+    ImGui::ColorEdit4("Pick me!", color);
     const float my_values[] = { 0.2f, 0.1f, 1.0f, 0.5f, 0.9f, 2.2f };
     ImGui::PlotLines("Frame Times", my_values, IM_ARRAYSIZE(my_values));
 
