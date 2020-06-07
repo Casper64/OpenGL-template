@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="imguiWindow">
+      <UniqueIdentifier>{787D5594-E432-CE89-6D27-C860D9DBC48D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\imguiWindow\Application.h">
+      <Filter>imguiWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imguiWindow\main.h">
+      <Filter>imguiWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui_impl_glfw.h" />
+    <ClInclude Include="src\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\imguiWindow\Application.cpp">
+      <Filter>imguiWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imguiWindow\main.cpp">
+      <Filter>imguiWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\pch.cpp" />
+  </ItemGroup>
+</Project>
