@@ -8,6 +8,8 @@
 
 #include <GLFW/glfw3.h>
 
+typedef void (*MainLoop)(void);
+
 struct WindowProps
 {
 	std::string title;
@@ -25,6 +27,7 @@ class Application
 {
 public:
 	Application();
+	Application(WindowProps &props);
 	~Application();
 	unsigned int get_width() { return m_props.width; };
 	unsigned int get_height() { return m_props.height; };
@@ -32,9 +35,11 @@ public:
 	void is_vsync(bool enabled);
 	GLFWwindow *get_window() { return m_window; };
 	void run();
+	void set_main_loop(MainLoop callback);
 
 private:
 	int init();
+	MainLoop render_callback;
 private:
 	WindowProps m_props;
 	GLFWwindow *m_window;

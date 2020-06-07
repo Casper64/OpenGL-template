@@ -8,10 +8,13 @@ static void glfw_error_callback(int error, const char *description)
 
 Application::Application()
 {
-	int status = init();
-	if (!status) {
-		printf("Something went wrong...");
-	}
+	init();
+}
+
+Application::Application(WindowProps &props)
+{
+	m_props = props;
+	init();
 }
 
 Application::~Application()
@@ -45,12 +48,14 @@ int Application::init()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	m_window = glfwCreateWindow(640, 360, "ImguiWindow", NULL, NULL);
+	m_window = glfwCreateWindow(m_props.width, m_props.height, m_props.title.c_str(), NULL, NULL);
 	if (m_window == NULL) {
 		status =-1;
 	}
 	glfwMakeContextCurrent(m_window);
-	glfwSwapInterval(1); // Enable vsync
+	if (m_props.vsync) {
+		glfwSwapInterval(1);
+	}
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		printf("Failed to initialize GLAD\n");
@@ -99,7 +104,7 @@ void Application::run()
 
 
 		/* Put User defined code here */
-
+		render_callback();
 
 		 // Rendering
 		ImGui::Render();
@@ -123,4 +128,9 @@ void Application::run()
 		glfwSwapBuffers(m_window);
 	}
 	delete this;
+}
+
+void Application::set_main_loop(MainLoop callback)
+{
+	render_callback = callback;
 }
