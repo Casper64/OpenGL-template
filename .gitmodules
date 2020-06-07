@@ -1,0 +1,6 @@
+[submodule "imguiWindow/vendor/GLFW"]
+	path = imguiWindow/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
+[submodule "imguiWindow/vendor/imgui"]
+	path = imguiWindow/vendor/imgui
+	url = https://github.com/ocornut/imgui.git
