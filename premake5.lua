@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "imguiWindow/vendor/GLFW/include"
 IncludeDir["glad"] = "imguiWindow/vendor/glad/include"
 IncludeDir["ImGui"] = "imguiWindow/vendor/imgui"
+IncludeDir["glm"] = "imguiWindow/vendor/glm"
 
 include "imguiWindow/vendor/GLFW"
 include "imguiWindow/vendor/glad"
@@ -42,7 +43,8 @@ project "imguiWindow"
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	libdirs

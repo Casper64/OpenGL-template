@@ -1,49 +1,35 @@
 #pragma once
-#include "pch.h"
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
 
-#include <glad/glad.h>
+#include "Window.h"
+#include "LayerStack.h"
+#include "ImguiLayer.h"
 
-#include <GLFW/glfw3.h>
 
-typedef void (*MainLoop)(void);
-
-struct WindowProps
-{
-	std::string title;
-	unsigned int width;
-	unsigned int height;
-	bool vsync;
-
-	WindowProps(const std::string &title = "Imgui Window", unsigned int width = 1280, unsigned int height = 720, bool vsync = true)
-		: title(title), width(width), height(height), vsync(vsync)
-	{
-	}
-};
+int main(int argc, char **argv);
 
 class Application
 {
 public:
 	Application();
-	Application(WindowProps &props);
-	~Application();
-	unsigned int get_width() { return m_props.width; };
-	unsigned int get_height() { return m_props.height; };
-	void set_vsync(bool enabled);
-	void is_vsync(bool enabled);
-	GLFWwindow *get_window() { return m_window; };
-	void run();
-	void set_main_loop(MainLoop callback);
+	virtual ~Application();
 
+	void push_layer(Layer *layer);
+	void push_overlay(Layer *overlay);
+
+	Window &get_window() { return *m_window; };
+	void close();
+
+	static Application &get() { return *s_instance; };
 private:
-	int init();
-	MainLoop render_callback;
+	void run();
 private:
-	WindowProps m_props;
-	GLFWwindow *m_window;
+	std::unique_ptr<Window> m_window;
+	ImguiLayer *m_imguiLayer;
 	bool m_running = true;
-	ImGuiIO io;
+	LayerStack m_layerStack;
+private:
+	static Application *s_instance;
+	friend int ::main(int argc, char **argv);
 };
 
+Application *create_application();

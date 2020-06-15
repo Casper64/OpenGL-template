@@ -5,4 +5,5 @@ bin-int
 *.vcxproj
 *.vcxproj.user
 *.vcxproj.filter
+imguiWindow/vendor/glm
 
