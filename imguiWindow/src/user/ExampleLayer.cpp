@@ -27,7 +27,7 @@ void ExampleLayer::on_detach()
 {
 }
 
-void ExampleLayer::on_update()
+void ExampleLayer::on_update(float time)
 {
 	// update shit 
 	// ...

@@ -43,7 +43,7 @@ void Application::run()
 		float time = (float)glfwGetTime();
 		
 		for (Layer *layer : m_layerStack) {
-			layer->on_update();
+			layer->on_update(time);
 		}
 
 		m_imguiLayer->begin();
