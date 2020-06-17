@@ -15,6 +15,7 @@ public:
 
 private:
 	Framebuffer* m_framebuffer;
+	float m_viewportSize[2] = { 0.0f, 0.0f };
 	
 };
 

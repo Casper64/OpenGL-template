@@ -19,6 +19,7 @@ public:
 	void invalidate();
 	void bind();
 	void unbind();
+	void resize(uint32_t width, uint32_t height);
 
 	uint32_t get_color_attachment_renderer_ID() { return m_ColorAttachment; };
 
