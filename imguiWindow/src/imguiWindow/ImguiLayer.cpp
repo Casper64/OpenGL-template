@@ -41,7 +41,7 @@ void ImguiLayer::on_attach()
 
 	// Setup Platform/Renderer bindings
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init("#version 410");
+	ImGui_ImplOpenGL3_Init("#version 450");
 }
 
 void ImguiLayer::on_detach()
@@ -57,8 +57,6 @@ void ImguiLayer::begin()
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void ImguiLayer::end()

@@ -1,6 +1,5 @@
-#include "pch.h"
 #include "ExampleLayer.h"
-#include "imgui.h"
+#include <imgui/imgui.h>
 
 #include <glad/glad.h>
 
@@ -31,6 +30,9 @@ void ExampleLayer::on_update(float time)
 {
 	// update shit 
 	// ...
+
+	glClearColor(0, 0, 0, 0);
+	glClear(GL_COLOR_BUFFER_BIT);
 
 	m_framebuffer->bind();
 

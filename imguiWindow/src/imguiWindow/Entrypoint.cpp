@@ -3,7 +3,9 @@
 
 
 Application *create_application();
-
+#ifdef BUILD_DIST
+#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
+#endif
 int main(int argc, char **argv)
 {
 	auto app = create_application();

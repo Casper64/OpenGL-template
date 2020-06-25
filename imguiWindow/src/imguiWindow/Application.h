@@ -11,6 +11,7 @@ class Application
 {
 public:
 	Application();
+	Application(WindowData &props);
 	virtual ~Application();
 
 	void push_layer(Layer *layer);
@@ -20,6 +21,8 @@ public:
 	void close();
 
 	static Application &get() { return *s_instance; };
+	virtual void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
+
 private:
 	void run();
 private:

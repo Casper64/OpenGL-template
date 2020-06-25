@@ -4,11 +4,14 @@
     <Filter Include="imguiWindow">
       <UniqueIdentifier>{787D5594-E432-CE89-6D27-C860D9DBC48D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="imguiWindow\OpenGL">
+      <UniqueIdentifier>{AC4FDF88-9833-A0DE-0194-9A31ED968A60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imguiWindow\dependencies">
+      <UniqueIdentifier>{2E4823EB-1A6D-726B-43B8-57FB2F3C7189}</UniqueIdentifier>
+    </Filter>
     <Filter Include="imguiWindow\imgui">
       <UniqueIdentifier>{E2C4577A-4EDB-5510-9752-E13103A82698}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="user">
-      <UniqueIdentifier>{842E9F7C-7065-A00D-1952-861005681C0F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,8 +31,17 @@
     <ClInclude Include="src\imguiWindow\LayerStack.h">
       <Filter>imguiWindow</Filter>
     </ClInclude>
+    <ClInclude Include="src\imguiWindow\OpenGL\OpenGLContext.h">
+      <Filter>imguiWindow\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\imguiWindow\Window.h">
       <Filter>imguiWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imguiWindow\base.h">
+      <Filter>imguiWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imguiWindow\dependencies\stb_image.h">
+      <Filter>imguiWindow\dependencies</Filter>
     </ClInclude>
     <ClInclude Include="src\imguiWindow\imgui\imgui_impl_glfw.h">
       <Filter>imguiWindow\imgui</Filter>
@@ -38,14 +50,12 @@
       <Filter>imguiWindow\imgui</Filter>
     </ClInclude>
     <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\user\ExampleLayer.h">
-      <Filter>user</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imguiWindow\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\imguiWindow\base.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\imguiWindow\Application.cpp">
+      <Filter>imguiWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imguiWindow\Entrypoint.cpp">
       <Filter>imguiWindow</Filter>
     </ClCompile>
     <ClCompile Include="src\imguiWindow\Framebuffer.cpp">
@@ -60,6 +70,9 @@
     <ClCompile Include="src\imguiWindow\LayerStack.cpp">
       <Filter>imguiWindow</Filter>
     </ClCompile>
+    <ClCompile Include="src\imguiWindow\OpenGL\OpenGLContext.cpp">
+      <Filter>imguiWindow\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\imguiWindow\Window.cpp">
       <Filter>imguiWindow</Filter>
     </ClCompile>
@@ -70,13 +83,5 @@
       <Filter>imguiWindow\imgui</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp" />
-    <ClCompile Include="src\user\ExampleLayer.cpp">
-      <Filter>user</Filter>
-    </ClCompile>
-    <ClCompile Include="src\user\app.cpp">
-      <Filter>user</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imguiWindow\Entrypoint.cpp" />
-    <ClCompile Include="src\imguiWindow\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,15 @@
 #include "pch.h"
 #include "Window.h"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "dependencies/stb_image.h"
+#include "Application.h"
+
+static void glfwKeyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
+{
+	Application::get().key_callback(window, key, scancode, action, mods);
+}
+
 static void glfwErrorCallback(int error, const char *description)
 {
 	printf("GLFW error (%d): %s\n", error, description);
@@ -50,6 +59,18 @@ void Window::init(const WindowData &data)
 
 		// do callbacks
 	});
+
+	glfwSetKeyCallback(m_window, glfwKeyCallback);
+
+	if (m_data.icon[0] != '\0') {
+		GLFWimage *icon = new GLFWimage();
+		int width, height, channels;
+		//stbi_set_flip_vertically_on_load(true);
+		icon->pixels = stbi_load("icon.png", &icon->width, &icon->height, 0, 4);
+		glfwSetWindowIcon(m_window, 1, icon);
+		stbi_image_free(icon->pixels);
+		delete icon;
+	}
 }
 
 void Window::shutdown()

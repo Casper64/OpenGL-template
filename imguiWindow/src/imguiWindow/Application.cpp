@@ -14,6 +14,17 @@ Application::Application()
 	push_overlay(m_imguiLayer);
 }
 
+Application::Application(WindowData &props)
+{
+	s_instance = this;
+	m_window = Window::Create(props);
+
+	// init renderer
+
+	m_imguiLayer = new ImguiLayer();
+	push_overlay(m_imguiLayer);
+}
+
 Application::~Application()
 {
 	// shutdown renderer
@@ -34,6 +45,10 @@ void Application::push_overlay(Layer *overlay)
 void Application::close()
 {
 	m_running = false;
+}
+
+void Application::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
+{
 }
 
 void Application::run()
