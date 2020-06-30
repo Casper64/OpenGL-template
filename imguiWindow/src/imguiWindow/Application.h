@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Window.h"
-#include "LayerStack.h"
-#include "ImguiLayer.h"
+#include "imguiWindow/Window.h"
+#include "imguiWindow/LayerStack.h"
+#include "imguiWindow/ImguiLayer.h"
+#include "imguiWindow/events/Event.h"
 
 
 int main(int argc, char **argv);
@@ -11,8 +12,10 @@ class Application
 {
 public:
 	Application();
-	Application(WindowData &props);
+	Application(WindowProps &props);
 	virtual ~Application();
+
+	void onEvent(Event &e);
 
 	void push_layer(Layer *layer);
 	void push_overlay(Layer *overlay);

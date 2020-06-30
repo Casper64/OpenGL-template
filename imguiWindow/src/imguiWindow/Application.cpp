@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Application.h"
+#include "ImguiWindow/Application.h"
 
 Application *Application::s_instance = nullptr;
 
@@ -7,6 +7,7 @@ Application::Application()
 {
 	s_instance = this;
 	m_window = Window::Create();
+	m_window->setEventCallback(BIND_EVENT_FN(Application::onEvent));
 
 	// init renderer
 
@@ -14,10 +15,11 @@ Application::Application()
 	push_overlay(m_imguiLayer);
 }
 
-Application::Application(WindowData &props)
+Application::Application(WindowProps &props)
 {
 	s_instance = this;
 	m_window = Window::Create(props);
+	m_window->setEventCallback(BIND_EVENT_FN(Application::onEvent));
 
 	// init renderer
 
@@ -28,6 +30,17 @@ Application::Application(WindowData &props)
 Application::~Application()
 {
 	// shutdown renderer
+}
+
+void Application::onEvent(Event &e)
+{
+	std::cout << "from imguiWindow; " << e.toString() << std::endl;
+	EventDispatcher dispatcher(e);
+	
+	for (auto it = m_layerStack.rbegin(); it != m_layerStack.rend(); ++it) {
+		if (e.handled) break;
+		(*it)->on_event(e);
+	}
 }
 
 void Application::push_layer(Layer *layer)

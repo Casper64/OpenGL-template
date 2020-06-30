@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "OpenGLContext.h"
+#include "ImGuiWindow/OpenGL/OpenGLContext.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>

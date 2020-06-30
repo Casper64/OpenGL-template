@@ -61,3 +61,8 @@ void ExampleLayer::on_imgui_render()
 	ImGui::Image((void *)textureID, ImVec2{ m_viewportSize[0], m_viewportSize[1] });
 	ImGui::End();
 }
+
+void ExampleLayer::on_event(Event &event)
+{
+	std::cout << event.toString() << std::endl;
+}

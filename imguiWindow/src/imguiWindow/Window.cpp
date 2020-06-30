@@ -1,9 +1,15 @@
 #include "pch.h"
-#include "Window.h"
+#include "imguiWindow/Window.h"
+
+
+#include "imguiWindow/Application.h"
+
+#include "imguiWindow/events/Event.h"
+#include "imguiWindow/events/KeyEvent.h"
+#include "imguiWindow/events/MouseEvent.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "dependencies/stb_image.h"
-#include "Application.h"
+#include "imguiWindow/dependencies/stb_image.h"
 
 static void glfwKeyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
@@ -15,7 +21,7 @@ static void glfwErrorCallback(int error, const char *description)
 	printf("GLFW error (%d): %s\n", error, description);
 }
 
-Window::Window(const WindowData &props)
+Window::Window(const WindowProps &props)
 {
 	init(props);
 }
@@ -26,16 +32,17 @@ Window::~Window()
 }
 
 
-Scope<Window> Window::Create(const WindowData &props)
+Scope<Window> Window::Create(const WindowProps &props)
 {
 	return CreateScope<Window>(props);
 }
 
-void Window::init(const WindowData &data)
+void Window::init(const WindowProps &data)
 {
 	m_data.width = data.width;
 	m_data.height = data.height;
 	m_data.title = data.title;
+	strcpy_s(m_data.icon, data.icon);
 
 	int success = glfwInit();
 	if (!success) {
@@ -60,11 +67,74 @@ void Window::init(const WindowData &data)
 		// do callbacks
 	});
 
-	glfwSetKeyCallback(m_window, glfwKeyCallback);
+	glfwSetKeyCallback(m_window, [](GLFWwindow *window, int key, int scancode, int action, int mods) {
+		WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+
+		switch (action) {
+		case GLFW_PRESS:
+		{
+			KeyPressedEvent event(static_cast<int>(key), 0);
+			data.EventCallback(event);
+			break;
+		}
+		case GLFW_RELEASE:
+		{
+			KeyReleasedEvent event(static_cast<int>(key));
+			data.EventCallback(event);
+			break;
+		}
+		case GLFW_REPEAT:
+		{
+			KeyPressedEvent event(static_cast<int>(key), 1);
+			data.EventCallback(event);
+			break;
+		}
+		}
+	});
+
+	glfwSetCharCallback(m_window, [](GLFWwindow *window, unsigned int keycode) {
+		WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+
+		KeyTypedEvent event(static_cast<int>(keycode));
+		data.EventCallback(event);
+	});
+
+	glfwSetMouseButtonCallback(m_window, [](GLFWwindow *window, int button, int action, int mods) {
+		WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+
+		switch (action) {
+		case GLFW_PRESS:
+		{
+			MouseButtonPressedEvent event(static_cast<int>(button));
+			data.EventCallback(event);
+			break;
+		}
+		case GLFW_RELEASE:
+		{
+			MouseButtonReleasedEvent event(static_cast<int>(button));
+			data.EventCallback(event);
+			break;
+		}
+		}
+	});
+
+	glfwSetScrollCallback(m_window, [](GLFWwindow *window, double xOffset, double yOffset) {
+		WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+
+		MouseScrolledEvent event((float)xOffset, (float)yOffset);
+		data.EventCallback(event);
+	});
+
+	glfwSetCursorPosCallback(m_window, [](GLFWwindow *window, double xPos, double yPos) {
+		WindowData &data = *(WindowData *)glfwGetWindowUserPointer(window);
+
+		MouseMovedEvent event((float)xPos, (float)yPos);
+		data.EventCallback(event);
+	});
+
 
 	if (m_data.icon[0] != '\0') {
 		GLFWimage *icon = new GLFWimage();
-		int width, height, channels;
 		//stbi_set_flip_vertically_on_load(true);
 		icon->pixels = stbi_load("icon.png", &icon->width, &icon->height, 0, 4);
 		glfwSetWindowIcon(m_window, 1, icon);

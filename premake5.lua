@@ -103,7 +103,8 @@ project "Sandbox"
 		"imguiWindow/src",
 		"imguiWindow/vendor",
 		"%{IncludeDir.glad}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.GLFW}"
 	}
 
 	links

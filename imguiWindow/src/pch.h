@@ -7,4 +7,7 @@
 #include <string>
 #include <memory>
 #include <vector>
+#include <sstream>
+#include <ostream>
+#include <functional>
 

@@ -1,11 +1,11 @@
 #include "pch.h"
-#include "ImguiLayer.h"
+#include "ImguiWindow/ImguiLayer.h"
 
 #include <imgui.h>
 #include <examples/imgui_impl_glfw.h>
 #include <examples/imgui_impl_opengl3.h>
 
-#include "Application.h"
+#include "ImguiWindow/Application.h"
 
 
 ImguiLayer::ImguiLayer() 
