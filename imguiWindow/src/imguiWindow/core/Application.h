@@ -1,8 +1,8 @@
 #pragma once
 
-#include "imguiWindow/Window.h"
-#include "imguiWindow/LayerStack.h"
-#include "imguiWindow/ImguiLayer.h"
+#include "imguiWindow/core/Window.h"
+#include "imguiWindow/core/LayerStack.h"
+#include "imguiWindow/core/ImguiLayer.h"
 #include "imguiWindow/events/Event.h"
 
 
@@ -24,7 +24,6 @@ public:
 	void close();
 
 	static Application &get() { return *s_instance; };
-	virtual void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
 
 private:
 	void run();

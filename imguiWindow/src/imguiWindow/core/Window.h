@@ -1,6 +1,6 @@
 #pragma once
 #include "pch.h"
-#include "imguiWindow/base.h"
+#include "imguiWindow/core/base.h"
 #include "imguiWindow/OpenGL/OpenGLContext.h"
 #include "imguiWindow/events/Event.h"
 

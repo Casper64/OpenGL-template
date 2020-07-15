@@ -1,5 +1,6 @@
 #include "pch.h"
-#include "ImguiWindow/Application.h"
+#include "ImguiWindow/core/Application.h"
+#include "imguiWindow/renderer/Renderer.h"
 
 Application *Application::s_instance = nullptr;
 
@@ -10,6 +11,7 @@ Application::Application()
 	m_window->setEventCallback(BIND_EVENT_FN(Application::onEvent));
 
 	// init renderer
+	Renderer::init();
 
 	m_imguiLayer = new ImguiLayer();
 	push_overlay(m_imguiLayer);
@@ -22,6 +24,7 @@ Application::Application(WindowProps &props)
 	m_window->setEventCallback(BIND_EVENT_FN(Application::onEvent));
 
 	// init renderer
+	Renderer::init();
 
 	m_imguiLayer = new ImguiLayer();
 	push_overlay(m_imguiLayer);
@@ -34,7 +37,6 @@ Application::~Application()
 
 void Application::onEvent(Event &e)
 {
-	std::cout << "from imguiWindow; " << e.toString() << std::endl;
 	EventDispatcher dispatcher(e);
 	
 	for (auto it = m_layerStack.rbegin(); it != m_layerStack.rend(); ++it) {
@@ -60,9 +62,6 @@ void Application::close()
 	m_running = false;
 }
 
-void Application::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
-{
-}
 
 void Application::run()
 {

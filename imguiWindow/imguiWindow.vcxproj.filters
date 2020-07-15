@@ -16,29 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core.h" />
-    <ClInclude Include="src\imguiWindow\Application.h">
-      <Filter>imguiWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imguiWindow\Framebuffer.h">
-      <Filter>imguiWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imguiWindow\ImguiLayer.h">
-      <Filter>imguiWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imguiWindow\Layer.h">
-      <Filter>imguiWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imguiWindow\LayerStack.h">
-      <Filter>imguiWindow</Filter>
-    </ClInclude>
     <ClInclude Include="src\imguiWindow\OpenGL\OpenGLContext.h">
       <Filter>imguiWindow\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imguiWindow\Window.h">
-      <Filter>imguiWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imguiWindow\base.h">
-      <Filter>imguiWindow</Filter>
     </ClInclude>
     <ClInclude Include="src\imguiWindow\dependencies\stb_image.h">
       <Filter>imguiWindow\dependencies</Filter>
@@ -53,31 +32,24 @@
     <ClInclude Include="src\imguiWindow\events\Event.h" />
     <ClInclude Include="src\imguiWindow\events\KeyEvent.h" />
     <ClInclude Include="src\imguiWindow\events\MouseEvent.h" />
+    <ClInclude Include="src\imguiWindow\core\Application.h" />
+    <ClInclude Include="src\imguiWindow\core\base.h" />
+    <ClInclude Include="src\imguiWindow\core\Framebuffer.h" />
+    <ClInclude Include="src\imguiWindow\core\ImguiLayer.h" />
+    <ClInclude Include="src\imguiWindow\core\Layer.h" />
+    <ClInclude Include="src\imguiWindow\core\LayerStack.h" />
+    <ClInclude Include="src\imguiWindow\core\Window.h" />
+    <ClInclude Include="src\imguiWindow\renderer\Buffer.h" />
+    <ClInclude Include="src\imguiWindow\renderer\include.h" />
+    <ClInclude Include="src\imguiWindow\renderer\Renderer.h" />
+    <ClInclude Include="src\imguiWindow\renderer\Renderer2D.h" />
+    <ClInclude Include="src\imguiWindow\renderer\Shader.h" />
+    <ClInclude Include="src\imguiWindow\renderer\Texture.h" />
+    <ClInclude Include="src\imguiWindow\renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\imguiWindow\Application.cpp">
-      <Filter>imguiWindow</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imguiWindow\Entrypoint.cpp">
-      <Filter>imguiWindow</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imguiWindow\Framebuffer.cpp">
-      <Filter>imguiWindow</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imguiWindow\ImguiLayer.cpp">
-      <Filter>imguiWindow</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imguiWindow\Layer.cpp">
-      <Filter>imguiWindow</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imguiWindow\LayerStack.cpp">
-      <Filter>imguiWindow</Filter>
-    </ClCompile>
     <ClCompile Include="src\imguiWindow\OpenGL\OpenGLContext.cpp">
       <Filter>imguiWindow\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imguiWindow\Window.cpp">
-      <Filter>imguiWindow</Filter>
     </ClCompile>
     <ClCompile Include="src\imguiWindow\imgui\imgui_impl_glfw.cpp">
       <Filter>imguiWindow\imgui</Filter>
@@ -86,6 +58,18 @@
       <Filter>imguiWindow\imgui</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\imguiWindow\core\Application.cpp" />
+    <ClCompile Include="src\imguiWindow\core\Entrypoint.cpp" />
+    <ClCompile Include="src\imguiWindow\core\Framebuffer.cpp" />
+    <ClCompile Include="src\imguiWindow\core\ImguiLayer.cpp" />
+    <ClCompile Include="src\imguiWindow\core\LayerStack.cpp" />
+    <ClCompile Include="src\imguiWindow\core\Window.cpp" />
+    <ClCompile Include="src\imguiWindow\renderer\Buffer.cpp" />
+    <ClCompile Include="src\imguiWindow\renderer\Renderer.cpp" />
+    <ClCompile Include="src\imguiWindow\renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\imguiWindow\renderer\Shader.cpp" />
+    <ClCompile Include="src\imguiWindow\renderer\Texture.cpp" />
+    <ClCompile Include="src\imguiWindow\renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

@@ -10,4 +10,5 @@
 #include <sstream>
 #include <ostream>
 #include <functional>
+#include <array>
 

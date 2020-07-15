@@ -1,5 +1,5 @@
 #pragma once
-#include "imguiWindow/base.h"
+#include "imguiWindow/core/base.h"
 
 struct GLFWwindow;
 

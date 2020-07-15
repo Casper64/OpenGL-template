@@ -2,10 +2,11 @@
 
 
 
-#include "imguiWindow/Application.h"
-#include "imguiWindow/Layer.h"
-#include "imguiWindow/ImguiLayer.h"
+#include "imguiWindow/core/Application.h"
+#include "imguiWindow/core/Layer.h"
+#include "imguiWindow/core/ImguiLayer.h"
 
 
 // rendering
-#include "imguiWindow/Framebuffer.h" 
+#include "imguiWindow/core/Framebuffer.h" 
+

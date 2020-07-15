@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "imguiWindow/Window.h"
+#include "imguiWindow/core/Window.h"
 
 
-#include "imguiWindow/Application.h"
+#include "imguiWindow/core/Application.h"
 
 #include "imguiWindow/events/Event.h"
 #include "imguiWindow/events/KeyEvent.h"
@@ -11,10 +11,6 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "imguiWindow/dependencies/stb_image.h"
 
-static void glfwKeyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
-{
-	Application::get().key_callback(window, key, scancode, action, mods);
-}
 
 static void glfwErrorCallback(int error, const char *description)
 {
